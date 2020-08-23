@@ -1,43 +1,51 @@
 package com.example.loginlocal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.util.Log;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public TextView res_log;
+    private TextView res_log;
+    private String usuario;
+    private String senha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         res_log = findViewById(R.id.textView_resultadoLogin);
-        Bundle bundle = getIntent().getExtras();
-        String LOGIN = bundle.getString("LOGIN_CORRETO");
-        String SENHA = bundle.getString("SENHA_CORRETA");
-        String login_usuario = bundle.getString("KEY_LOGIN");
-        String senha_usuario = bundle.getString("KEY_SENHA");
 
-        if((login_usuario.equals(LOGIN))&&(senha_usuario.equals(SENHA))){
-            res_log.setText(R.string.login_sucesso);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Intent intent = getIntent();
+        usuario = intent.getStringExtra(getString(R.string.key_usuario));
+        senha = intent.getStringExtra(getString(R.string.key_senha));
+
+
+        ValidaLogin();
+
+    }
+    private void ValidaLogin() {
+        if ((usuario.equals(getString(R.string.user_default))) && (senha.equals(getString(R.string.password_defaul)))) {
+            res_log.setText(R.string.bem_vindo_msg);
+        } else {
+            res_log.setText(R.string.erro_login_msg);
         }
-        else{
-            res_log.setText(R.string.login_erro);
+    }
+        //@Override
+        public boolean onOptionItemSelected(@NonNull MenuItem item){
+            if(item.getItemId() == android.R.id.home){
+            finish();
+            }
+            return super.onOptionsItemSelected(item);
         }
-
-        ValidaLogin(LOGIN,SENHA,login_usuario,senha_usuario);
-
-    }
-private void ValidaLogin(String LOGIN,String SENHA,String login_usuario,String senha_usuario){
-    if((login_usuario.equals(LOGIN))&&(senha_usuario.equals(SENHA))){
-        res_log.setText(R.string.login_sucesso);
-    }
-    else{
-        res_log.setText(R.string.login_erro);
-    }
-    
-}
 }
