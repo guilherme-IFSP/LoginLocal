@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Login no Dispositivo</string>
+
+    <string name="tag">LOGIN_LOCAL</string>
+
     <string name="usuario">Usuário</string>
     <string name="hint_usuario">Digite seu e-mail</string>
     <string name="senha">Senha</string>
@@ -8,6 +11,7 @@
 
     <string name="key_usuario">USUARIO</string>
     <string name="key_senha">SENHA</string>
+
     <string name="user_default">guilherme.c@aluno.ifsp.edu.br</string>
     <string name="password_defaul">password</string>
 

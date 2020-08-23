@@ -32,13 +32,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_login = findViewById(R.id.button_logar);
         btn_login.setOnClickListener(this);
     }
+   // @Override
+    protected  void onStart(){
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() + " | Método: OnStart()");
+        super.onStart();
+    }
+    protected void onRestart(){
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onRestart()");
+        super.onRestart();
+    }
+    protected void onResume() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onResume()");
+        super.onResume();
+    }
+    protected void onPause() {Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onPause()");
+    super.onPause();
+    }
+    protected void onStop() {Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onStop()");
+    super.onStop();
+    }
+    protected void onDestroy() {Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onDestroy()");
+    super.onDestroy();
+    }
 
     public void onClick(View view) {
        if(view == btn_login){
            usuario = edittxt_login.getText().toString();
            senha = edittxt_senha.getText().toString();
 
-           if(usuario.isEmpty()||senha.isEmpty());{
+           if(usuario.isEmpty()||senha.isEmpty()){
+               Log.i("if bugado","entrou no if");
                Toast.makeText(this,R.string.erro_entrada_msg,Toast.LENGTH_LONG).show();
            }
            abrirLoginActivity();

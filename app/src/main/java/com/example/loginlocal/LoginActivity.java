@@ -17,6 +17,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i(getString(R.string.tag), "Classe: "+ getClass().getSimpleName()+ "| Metodo:  onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -33,6 +35,36 @@ public class LoginActivity extends AppCompatActivity {
 
         ValidaLogin();
 
+    }
+    @Override
+    protected void onStart() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onStart()");
+        super.onStart();
+    }
+        @Override
+        protected void onRestart() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onRestart()");
+        super.onRestart();
+    }
+    @Override
+    protected void onResume() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onResume()");
+        super.onResume();
+    }
+    @Override
+    protected void onPause() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onPause()");
+        super.onPause();
+    }
+    @Override
+    protected void onStop() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onStop()");
+        super.onStop();
+    }
+    @Override
+    protected void onDestroy() {
+        Log.i(getString(R.string.tag), "Classe: " + getClass().getSimpleName() +  "| Método : onDestroy()");
+        super.onDestroy();
     }
     private void ValidaLogin() {
         if ((usuario.equals(getString(R.string.user_default))) && (senha.equals(getString(R.string.password_defaul)))) {
